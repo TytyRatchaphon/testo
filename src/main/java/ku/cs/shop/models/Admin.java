@@ -1,9 +1,9 @@
 package ku.cs.shop.models;
 
 public class Admin {
-    private Account user;
+    private Account account;
 
     public Admin() {
-        this.user = new Account("admin","onlyadmin");
+        this.account = new Account("admin","onlyadmin");
     }
 }

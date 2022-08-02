@@ -9,7 +9,7 @@ public class Account {
         this.password = password;
     }
 
-    public void newPassword(String pass){
-        this.password = pass;
+    public String getUsername() {
+        return username;
     }
 }
