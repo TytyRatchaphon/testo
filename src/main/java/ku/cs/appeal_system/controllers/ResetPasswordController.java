@@ -23,7 +23,7 @@ public class ResetPasswordController {
         String currentPasswordString = currentPasswordField.getText();
         String newPasswordString = newPasswordField.getText();
         String confirmPasswordString = confirmNewPasswordField.getText();
-        if (currentPasswordString.equals("") && newPasswordString.equals("") && newPasswordString.equals("") && usernameString.equals("")){
+        if (currentPasswordString.equals("") && newPasswordString.equals("") && confirmPasswordString.equals("") && usernameString.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);

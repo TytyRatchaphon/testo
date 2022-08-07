@@ -23,5 +23,6 @@
       <Button layoutX="372.0" layoutY="410.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
       <PasswordField fx:id="newPasswordPasswordField" layoutX="325.0" layoutY="310.0" />
       <PasswordField fx:id="confirmPasswordPasswordField" layoutX="325.0" layoutY="370.0" />
+      <Button layoutX="80.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
    </children>
 </AnchorPane>

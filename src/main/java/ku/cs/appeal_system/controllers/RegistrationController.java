@@ -39,13 +39,20 @@ public class RegistrationController {
         String password = newPasswordPasswordField.getText(); //
         String confirmPassword = confirmPasswordPasswordField.getText();
 
-        if (password.equals(confirmPassword)) { // ในกรณีที่ password กับ confirm password ตรงกัน และผู้ใช้ยังไม่มีบัญชีอยู่ในระบบ
+        if (password.equals("") && username.equals("") && name.equals("") && confirmPassword.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill your information.");
+
+            alert.showAndWait();
+        } else if (password.equals(confirmPassword)) {// ในกรณีที่ password กับ confirm password ตรงกัน และผู้ใช้ยังไม่มีบัญชีอยู่ในระบบ
             Student student1 = new Student(name, username, password); // จะส่งค่าไปเก็บที่คลาส Student
             try {
                 FXRouter.goTo("login"); // เด้งไปที่หน้า login กรอก username และ password ที่ได้ทำการ register ไป
             } catch (IOException ex) {
-                System.err.println("ไปทีหน้าloginไม่ได้");
-                System.err.println("ให้ตรวจสอบการกําหนดroute");
+                System.err.println("ไปทีหน้า login ไม่ได้");
+                System.err.println("ให้ตรวจสอบการกําหนด route");
                 System.err.println(ex);
             }
         }
@@ -61,6 +68,16 @@ public class RegistrationController {
             alert.setContentText("Password did not match.");
 
             alert.showAndWait();  //ถ้า password กับ confirm password ไม่ตรงกันแสดง popup ว่า Password did not match.
+        }
+    }
+
+    public void  handleBackButton(ActionEvent actionEvent){
+        try{
+            FXRouter.goTo("login");
+        } catch (IOException ex) {
+            System.err.println("ไปทีหน้า login ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+            System.err.println(ex);
         }
     }
 }
