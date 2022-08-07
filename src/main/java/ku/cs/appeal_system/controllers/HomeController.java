@@ -1,8 +1,7 @@
-package ku.cs.shop.controllers;
+package ku.cs.appeal_system.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import ku.cs.shop.models.Account;
 
 import java.io.IOException;
 
@@ -17,8 +16,8 @@ public class HomeController {
         try {
             com.github.saacsos.FXRouter.goTo("login");
         } catch (IOException ex) {
-            System.err.println("ไปที7หน้าhome ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกําหนดroute");
+            System.err.println("ไปที่หน้า home ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
         }
     }
 

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.shop.controllers.HomeAfterLoginController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.appeal_system.controllers.HomeAfterLoginController">
    <children>
       <Label layoutX="576.0" layoutY="14.0" text="username:" />
       <Label fx:id="usernameLabel" layoutX="658.0" layoutY="14.0" text="Label" />

@@ -1,4 +1,4 @@
-package ku.cs.shop.models;
+package ku.cs.appeal_system.models;
 
 public class Officer {
     private Account account;

@@ -11,7 +11,7 @@ import java.io.IOException;
 public class ProjectApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXRouter.bind(this, stage, "6410450150", 800, 600);
+        FXRouter.bind(this, stage, "Project Myopia", 800, 600);
         configRoute();
         FXRouter.goTo("home");
     }
@@ -22,7 +22,8 @@ public class ProjectApplication extends Application {
         FXRouter.when("login",packageStr+"login.fxml");
         FXRouter.when("home_after_login",packageStr+"home_after_login.fxml");
         FXRouter.when("register", packageStr+"registration.fxml");
-        FXRouter.when("officer_register",packageStr+"officeregistrationcontroller.fxml");
+        FXRouter.when("officer_register",packageStr+"officer_registration.fxml");
+        FXRouter.when("reset",packageStr+"reset_password.fxml");
     }
 
     public static void main(String[] args) {

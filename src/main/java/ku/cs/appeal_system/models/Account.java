@@ -1,4 +1,4 @@
-package ku.cs.shop.models;
+package ku.cs.appeal_system.models;
 
 public class Account {
     private String username;
@@ -11,5 +11,9 @@ public class Account {
 
     public String getUsername() {
         return username;
+    }
+
+    public void setPassword(String newPasswordString){
+        this.password = newPasswordString;
     }
 }
