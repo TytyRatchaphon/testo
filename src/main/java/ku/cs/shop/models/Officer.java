@@ -5,9 +5,21 @@ public class Officer {
     private String name;
     private String agency;
 
-    public Officer(Account user, String name, String agency) {
-        this.account = user;
+    public Account getAccount() {
+        return account;
+    }
+
+    public String getAgency() {
+        return agency;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Officer(String agency,String name,String user,   String pass) {
         this.name = name;
         this.agency = agency;
+        this.account = new Account(user,pass);
     }
 }

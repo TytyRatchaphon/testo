@@ -39,4 +39,15 @@ public class LoginController {
             System.err.println(ex);
         }
     }
+
+    public void handleOfficerRegisterButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("officer_register");
+        }
+        catch (IOException ex) {
+            System.err.println("ไปทีหน้าregisterไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนดroute");
+            System.err.println(ex);
+        }
+    }
 }
