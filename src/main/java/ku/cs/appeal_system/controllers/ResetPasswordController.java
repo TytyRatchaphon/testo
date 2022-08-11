@@ -34,20 +34,27 @@ public class ResetPasswordController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);
-            alert.setContentText("You must enter the same password twice in order to confirm password.");
+            alert.setContentText("New password must different from current password.");
 
             alert.showAndWait();
-        } else if (newPasswordString.equals(currentPasswordString) && newPasswordString.equals(null)) {
+        } else if (confirmPasswordString.equals("") && !newPasswordString.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);
-            alert.setContentText("New password must different from current password.");
+            alert.setContentText("You must enter the same password twice in order to confirm password.");
+
+            alert.showAndWait();
+        } else if (!confirmPasswordString.equals(newPasswordString)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!!");
+            alert.setHeaderText(null);
+            alert.setContentText("New password and confirmation password must be the same.");
 
             alert.showAndWait();
         } else{
             //loginAccount.setPassword(newPasswordString);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("");
+            alert.setTitle("Success!!");
             alert.setHeaderText(null);
             alert.setContentText("Password change success.");
 

@@ -41,7 +41,7 @@ public class RegistrationController {
 
         if (password.equals("") && username.equals("") && name.equals("") && confirmPassword.equals("")) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("");
+            alert.setTitle("Error!!");
             alert.setHeaderText(null);
             alert.setContentText("Please fill your information.");
 

@@ -30,7 +30,7 @@ public class LoginController {
         }
         else if(usernameString.equals("") && passwordString.equals("")){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("");
+            alert.setTitle("Error!!");
             alert.setHeaderText(null);
             alert.setContentText("Please fill your information.");
 
@@ -54,8 +54,8 @@ public class LoginController {
             FXRouter.goTo("officer_register");
         }
         catch (IOException ex) {
-            System.err.println("ไปทีหน้าregisterไม่ได้");
-            System.err.println("ให้ตรวจสอบการกําหนดroute");
+            System.err.println("ไปทีหน้า register ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
             System.err.println(ex);
         }
     }
