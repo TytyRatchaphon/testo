@@ -7,67 +7,85 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import ku.cs.appeal_system.models.Account;
 import com.github.saacsos.FXRouter;
+import ku.cs.appeal_system.models.AccountList;
+import ku.cs.appeal_system.services.AccountFileDataSource;
 
 import java.io.IOException;
 
 public class LoginController {
-    @FXML private TextField usernameTextField;
-    @FXML private PasswordField passwordPasswordField;
-
     @FXML
-    public void handleLoginButton(ActionEvent actionEvent) { //มีerror
-        // รับข้อมูลจาก TextField ข้อมูลที่รับเป็น String เสมอ
-        String usernameString = usernameTextField.getText();
-        String passwordString = passwordPasswordField.getText();
-        Account account = new Account(usernameString,passwordString);
-        if(usernameString != "" && passwordString != ""){
-            try {
-                FXRouter.goTo("home_after_login",account);
-            } catch (IOException ex) {
-                System.err.println("ไปทีหน้า home_after_login ไม่ได้");
-                System.err.println("ให้ตรวจสอบการกําหนด route");
-                }
-        }
-        else if(usernameString.equals("") && passwordString.equals("")){
+    private TextField usernameTextField;
+    @FXML
+    private PasswordField passwordPasswordField;
+
+    public Account loginAccount;
+
+    private AccountList accountList;
+    private AccountFileDataSource dataSource;
+
+    @FXML public void handleLoginButton(ActionEvent event) {
+        String usernameStr = usernameTextField.getText();
+        String passwordStr = passwordPasswordField.getText();
+
+        dataSource = new AccountFileDataSource();
+        dataSource.readData();
+        accountList = dataSource.getAllAccountList();
+
+        // --> return ข้อมูล account ของคนที่ username นี้
+        loginAccount = accountList.searchUsername(usernameStr);
+
+        // หา login account ไม่เจอ
+        if (loginAccount == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill your information.");
+            alert.setContentText("Please check your information and try again.");
 
             alert.showAndWait();
         }
+
+
+        if ((loginAccount.isBanned())) {
+
+            Account account = accountList.searchUsername(loginAccount.getUsername());
+            //เพิ่มจำนวน การพยายามเข้าใช้งาน ของ user ที่ถูกแบน
+            dataSource.writeData(accountList);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!!");
+            alert.setHeaderText(null);
+            alert.setContentText("This account was banned.");
+
+            alert.showAndWait();
+
+        }
+
+        // clear ช่อง TextField
+        usernameTextField.clear();
+        passwordPasswordField.clear();
+
     }
+
+
+
 
     public void handleRegisterButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("register");
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             System.err.println("ไปทีหน้า register ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
             System.err.println(ex);
         }
     }
 
-    public void handleOfficerRegisterButton(ActionEvent actionEvent) {
-        try {
-            FXRouter.goTo("officer_register");
-        }
-        catch (IOException ex) {
-            System.err.println("ไปทีหน้า register ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกําหนด route");
-            System.err.println(ex);
-        }
-    }
     public void handleResetPasswordButton(ActionEvent actionEvent) {
         try {
             FXRouter.goTo("reset");
-        }
-        catch (IOException ex) {
+        } catch (IOException ex) {
             System.err.println("ไปทีหน้า reset ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
             System.err.println(ex);
         }
     }
-
 }

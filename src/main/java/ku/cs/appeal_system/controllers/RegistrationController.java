@@ -5,79 +5,102 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import ku.cs.appeal_system.models.Student;
 import com.github.saacsos.FXRouter;
 import javafx.event.ActionEvent;
+import ku.cs.appeal_system.models.Account;
+import ku.cs.appeal_system.models.AccountList;
+import ku.cs.appeal_system.services.AccountFileDataSource;
+import ku.cs.appeal_system.services.DataSource;
+
 import java.io.IOException;
 
 public class RegistrationController {
-
-    private Student student;
 
     @FXML private Label errorNoticeLabel;
     @FXML private TextField newNameTextField;
     @FXML private TextField newUsernameTextField;
     @FXML private PasswordField newPasswordPasswordField;
     @FXML private PasswordField confirmPasswordPasswordField;
+    @FXML private TextField newLastnameTextField;
 
     @FXML
-    public void initialize() {
-        student = (Student) FXRouter.getData();
-    }
+    public void handleSubmitButton(ActionEvent event) {
+        //เขียนอ่านไฟล์
+        DataSource<AccountList> dataSource = new AccountFileDataSource();
+        AccountList accounts = dataSource.readData();
 
-    private void showErrorNoticePasswordDidNotMatch() {
-        errorNoticeLabel.setText("Those password did not match. Try Again.");
-    }
+        // รับข้อมูล จาก nameTextField ข้อมูลที่รับเป็น String เสมอ
+        String nameStr = newNameTextField.getText(); // ตัวแปร name
+        // รับข้อมูล จาก lastNameTextField ข้อมูลที่รับเป็น String เสมอ
+        String lastnameStr = newLastnameTextField.getText(); // ตัวแปร lastName
+        // รับข้อมูล จาก userNameTextField ข้อมูลที่รับเป็น String เสมอ
+        String usernameStr = newUsernameTextField.getText(); // ตัวแปร userName
+        // รับข้อมูล จาก PasswordField ข้อมูลที่รับเป็น String เสมอ
+        String passwordStr = newPasswordPasswordField.getText(); // ตัวแปร password
+        // รับข้อมูล จาก PasswordField ข้อมูลที่รับเป็น String เสมอ
+        String confirmPasswordStr = confirmPasswordPasswordField.getText(); // ตัวแปร confirmPassword
 
-//  private void showErrorNoticeUserAlreadyTaken() {
-//      errorNoticeLabel.setText("This user already taken. Please login.");
-//  }
 
-    public void handleSubmitButton(ActionEvent actionEvent) { //รับชื่อ username password และใส่ confirm password
-        String name = newNameTextField.getText();
-        String username = newUsernameTextField.getText();
-        String password = newPasswordPasswordField.getText(); //
-        String confirmPassword = confirmPasswordPasswordField.getText();
 
-        if (password.equals("") && username.equals("") && name.equals("") && confirmPassword.equals("")) {
+        if ((usernameStr.equals("") || nameStr.equals("") || lastnameStr.equals("") || passwordStr.equals("") || confirmPasswordStr.equals(""))) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);
-            alert.setContentText("Please fill your information.");
+            alert.setContentText("Please check your information and try again.");
 
             alert.showAndWait();
-        } else if (password.equals(confirmPassword)) {// ในกรณีที่ password กับ confirm password ตรงกัน และผู้ใช้ยังไม่มีบัญชีอยู่ในระบบ
-            Student student1 = new Student(name, username, password); // จะส่งค่าไปเก็บที่คลาส Student
-            try {
-                FXRouter.goTo("login"); // เด้งไปที่หน้า login กรอก username และ password ที่ได้ทำการ register ไป
-            } catch (IOException ex) {
-                System.err.println("ไปทีหน้า login ไม่ได้");
-                System.err.println("ให้ตรวจสอบการกําหนด route");
-                System.err.println(ex);
+        } else {
+            //check ช้อมูลซ้ำ --> ว่าใน account list มี usernameStr ซ้ำไหม ถ้าซ้ำจะสมัครไม่ได้
+            if (accounts.checkUsername(usernameStr)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Please check your information and try again.");
+
+                alert.showAndWait();
             }
-        }
 
-//      else if (ผู้สมัครมีบัญชีใช้งานอยู่แล้ว) {
-//          showErrorNoticeUserAlreadyTaken(); //ถ้า username มีอยู่ในระบบอยู่แล้วให้
-//      }                                      //showErrorNoticeUserAlreadyTaken() ช่วยแสดง error ตามบรรทัดที่ 32
+            //check ว่า name ซ้าไหม ถ้าซ้า alert
+            else if (accounts.checkName(nameStr)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error!!");
+                alert.setHeaderText(null);
+                alert.setContentText("Please check your information and try again.");
 
-        else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("");
-            alert.setHeaderText(null);
-            alert.setContentText("Password did not match.");
+                alert.showAndWait();
+            } else {
+                if (!passwordStr.equals(confirmPasswordStr)) {
 
-            alert.showAndWait();  //ถ้า password กับ confirm password ไม่ตรงกันแสดง popup ว่า Password did not match.
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error!!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please check your information and try again.");
+
+                    alert.showAndWait();
+
+                } else {
+                    //เขียนไฟล์ --> new Account
+                    accounts.addAccount(new Account(nameStr,lastnameStr ,usernameStr ,passwordStr ));
+                    dataSource.writeData(accounts);
+
+                    try {
+                        FXRouter.goTo("login");
+                    } catch (IOException e) {
+                        System.err.println("ไปที่หน้า login ไม่ได้");
+                        System.err.println("ให้ตรวจสอบการกำหนด route");
+                    }
+                }
+            }
+
         }
     }
-
-    public void  handleBackButton(ActionEvent actionEvent){
-        try{
+    public void handleBackButton(ActionEvent action){
+        try {
             FXRouter.goTo("login");
-        } catch (IOException ex) {
-            System.err.println("ไปทีหน้า login ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกําหนด route");
-            System.err.println(ex);
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
+
 }

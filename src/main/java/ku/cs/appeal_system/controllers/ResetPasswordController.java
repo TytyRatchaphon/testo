@@ -77,5 +77,5 @@ public class ResetPasswordController {
             System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
-    }
+}
 
