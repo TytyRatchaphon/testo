@@ -8,20 +8,13 @@ public class AccountList {
     public AccountList(){
         accounts = new ArrayList<>();
     }
-
     public void addAccount(Account account) {
         accounts.add(account);
     }
 
     public ArrayList<Account> getAllAccounts(){return accounts; }
 
-    public String toCsv() {
-        String result = "";
-        for (Account account : this.accounts){
-            result += account.toCsv() + "\n";
-        }
-        return result;
-    }
+
     public boolean checkUsername(String username){
         for(Account account:this.accounts){
             if(account.isUsername(username)){
@@ -49,6 +42,13 @@ public class AccountList {
                 return true;
             }
         }return false; //วน account แล้วไม่เจอ username
+    }
+    public String toCsv() {
+        String result = "";
+        for (Account account : this.accounts){
+            result += account.toCsv() + "\n";
+        }
+        return result;
     }
 
 }

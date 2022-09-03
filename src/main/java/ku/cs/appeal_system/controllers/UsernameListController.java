@@ -1,4 +1,4 @@
-package ku.cs.appeal_system.controllers.Admin;
+package ku.cs.appeal_system.controllers;
 
 import ku.cs.appeal_system.models.AccountList;
 import ku.cs.appeal_system.services.AccountFileDataSource;

@@ -1,6 +1,7 @@
 package ku.cs.appeal_system.models;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Account {
     private String username;
@@ -17,7 +18,7 @@ public class Account {
     private String type;
 
     //NewUser
-    public Account(String username, String password, String name, String lastname) {
+    public Account(String name, String lastname, String username, String password) {
         setType("User");
         this.name = name;
         this.lastname = lastname;
@@ -27,8 +28,8 @@ public class Account {
 
     }
     //for csv
-    public Account(String username,String password,String name,String lastname, String status,Integer countLogin){
-        this(username, name, lastname, password);
+    public Account(String name,String lastname,String username,String password, String status,Integer countLogin){
+        this(name, lastname, username, password);
         this.accountStatus = status;
         this.loginCount = countLogin;
 
@@ -80,6 +81,9 @@ public class Account {
         return accountStatus;
     }
     public Integer getLoginCount(){return loginCount;}
+    public String toString(){
+        return  type+","+username+","+accountStatus+","+loginCount;
+    }
     public String toCsv(){
         return type+","+name+","+lastname+","+username+","+password+","+accountStatus+","+loginCount;
     }

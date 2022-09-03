@@ -43,10 +43,11 @@ public class LoginController {
             alert.setContentText("Please check your information and try again.");
 
             alert.showAndWait();
-        } else {
-            if ((loginAccount.isBanned())) {
+        }
+        if ((loginAccount.isBanned())) {
 
                 Account account = accountList.searchUsername(loginAccount.getUsername());
+                account.setLoginCount();
                 dataSource.writeData(accountList);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -79,7 +80,7 @@ public class LoginController {
                         }
                     }
 
-                    else if(loginAccount.getType().equals("Admin")){
+                    if(loginAccount.getType().equals("Admin")){
                         try {
                             FXRouter.goTo("home_admin",loginAccount);
                         } catch (IOException e) {
@@ -88,7 +89,7 @@ public class LoginController {
                         }
                     }
 
-                    else if(loginAccount.getType().equals("Officer")){
+                    if(loginAccount.getType().equals("Officer")){
                         try {
                             FXRouter.goTo("อย่าลืมมาใส่ route",loginAccount);
                         } catch (IOException e) {
@@ -104,7 +105,6 @@ public class LoginController {
 
             }
         }
-    }
 
 
 

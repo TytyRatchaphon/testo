@@ -1,4 +1,4 @@
-package ku.cs.appeal_system.controllers.Admin;
+package ku.cs.appeal_system.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

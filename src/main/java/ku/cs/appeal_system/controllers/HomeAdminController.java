@@ -1,12 +1,15 @@
-package ku.cs.appeal_system.controllers.Admin;
+package ku.cs.appeal_system.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import ku.cs.appeal_system.models.Account;
 
 import java.awt.*;
 import java.io.IOException;
+import com.github.saacsos.FXRouter;
 
 public class HomeAdminController {
+
     private Account account;
     private Label usernameLabel;
 

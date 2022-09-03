@@ -20,7 +20,6 @@ public class AccountFileDataSource implements DataSource<AccountList>{
         this.directoryName = directoryName;
         this.filename = filename;
         checkFileIsExisted();
-
     }
 
 
@@ -29,7 +28,7 @@ public class AccountFileDataSource implements DataSource<AccountList>{
         File file = new File(directoryName);
 
         if(!file.exists()){ //ถ้า directory ไม่มีอยู่ให้สร้าง
-            file.mkdirs();
+            file.mkdir();
         }
 
         String path = directoryName+File.separator+filename;
@@ -41,7 +40,7 @@ public class AccountFileDataSource implements DataSource<AccountList>{
             try {
                 file.createNewFile();
 
-            } catch (IOException e) { e.printStackTrace(); }
+            } catch (IOException e) { throw new RuntimeException(e); }
         }
     }
 
@@ -60,13 +59,13 @@ public class AccountFileDataSource implements DataSource<AccountList>{
             buffer.write(accountList.toCsv());
 
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } finally {
             try {
                 buffer.close();
                 writer.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             }
         }
     }
@@ -89,6 +88,14 @@ public class AccountFileDataSource implements DataSource<AccountList>{
 
                 String[] data = line.split(",");
                 String type = data[0].trim();
+                if(type.equals("Admin")){
+                    accountList.addAccount(new AdminAccount(
+                            data[1].trim(),
+                            data[2].trim(),
+                            data[3].trim(),
+                            Integer.parseInt(data[4].trim())
+                    ));
+                }
                 if(type.equals("User")){
                     accountList.addAccount(new Account(
                             data[1].trim(),
@@ -100,21 +107,12 @@ public class AccountFileDataSource implements DataSource<AccountList>{
                     ));
                 }
 
-                if(type.equals("Admin")){
-                    accountList.addAccount(new Account(
-                            data[1].trim(),
-                            data[2].trim(),
-                            data[3].trim(),
-                            Integer.parseInt(data[4].trim())
-                    ));
-                }
-
             }
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return accountList;
     }
