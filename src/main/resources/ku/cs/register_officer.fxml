@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.appeal_system.controllers.RegisterOfficerController">
    <children>
-      <Button layoutX="118.0" layoutY="533.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="118.0" layoutY="533.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
       <Label layoutX="375.0" layoutY="45.0" text="Register">
          <font>
             <Font size="14.0" />
@@ -22,12 +21,12 @@
       <Label layoutX="316.0" layoutY="204.0" text="Agency" />
       <Label layoutX="310.0" layoutY="319.0" text="Password" />
       <Label layoutX="288.0" layoutY="382.0" text="Confirm Password" />
-      <TextField id="nameTextField" layoutX="336.0" layoutY="112.0" />
-      <TextField id="lastnameTextField" layoutX="337.0" layoutY="171.0" />
-      <TextField id="agencyTextField" layoutX="337.0" layoutY="222.0" />
-      <TextField id="userNameTextField" layoutX="338.0" layoutY="288.0" />
-      <PasswordField id="password" layoutX="337.0" layoutY="344.0" />
-      <PasswordField id="confirmPassword" layoutX="338.0" layoutY="411.0" />
-      <Button layoutX="375.0" layoutY="478.0" mnemonicParsing="false" text="Submit" />
+      <TextField fx:id="newNameTextField" layoutX="336.0" layoutY="112.0" />
+      <TextField fx:id="newLastNameTextField" layoutX="337.0" layoutY="171.0" />
+      <TextField fx:id="agencyTextField" layoutX="337.0" layoutY="222.0" />
+      <TextField fx:id="newUserNameTextField" layoutX="338.0" layoutY="288.0" />
+      <PasswordField fx:id="newPasswordPasswordField" layoutX="337.0" layoutY="344.0" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="338.0" layoutY="411.0" />
+      <Button layoutX="375.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
    </children>
 </AnchorPane>

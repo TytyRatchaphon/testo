@@ -11,12 +11,12 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="599.0" prefWidth="183.0">
                <children>
-                  <Button layoutX="52.0" layoutY="167.0" mnemonicParsing="false" text="Register Officer" />
+                  <Button layoutX="52.0" layoutY="167.0" mnemonicParsing="false" text="Register Officer" onAction="#handleRegisterOfficerButton"/>
                   <Label layoutX="25.0" layoutY="31.0" text="Username" />
                   <Label id="usernameLabel" layoutX="118.0" layoutY="31.0" text="Label" />
                   <Button layoutX="49.0" layoutY="220.0" mnemonicParsing="false" onAction="#handleResetPasswordButton" text="Reset Password" />
-                  <Button layoutX="71.0" layoutY="274.0" mnemonicParsing="false" text="User List" />
-                  <Button layoutX="49.0" layoutY="328.0" mnemonicParsing="false" text="Report insecurity" />
+                  <Button layoutX="71.0" layoutY="274.0" mnemonicParsing="false" text="User List" onAction="#handleUserListButton" />
+                  <Button layoutX="49.0" layoutY="328.0" mnemonicParsing="false" text="Report insecurity" onAction="#handleReportButton"/>
                   <Button layoutX="129.0" layoutY="553.0" mnemonicParsing="false" text="Logout" onAction="#handleLogoutButton"/>
                </children>
             </AnchorPane>
