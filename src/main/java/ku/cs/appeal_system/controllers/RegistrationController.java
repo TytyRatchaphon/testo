@@ -58,16 +58,6 @@ public class RegistrationController {
                 alert.setContentText("Username is unavailable");
 
                 alert.showAndWait();
-            }
-
-            //check ว่า name ซ้าไหม ถ้าซ้า alert
-            else if (accounts.checkName(nameStr)) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Error!!");
-                alert.setHeaderText(null);
-                alert.setContentText("Please check your information and try again.");
-
-                alert.showAndWait();
             } else {
                 if (!passwordStr.equals(confirmPasswordStr)) {
 

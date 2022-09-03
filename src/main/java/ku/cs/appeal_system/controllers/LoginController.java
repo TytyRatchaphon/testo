@@ -32,7 +32,7 @@ public class LoginController {
         dataSource.readData();
         accountList = dataSource.getAllAccountList();
 
-        // --> return ข้อมูล account ของคนที่ username นี้
+
         loginAccount = accountList.searchUsername(usernameStr);
 
         // หา login account ไม่เจอ
@@ -47,7 +47,6 @@ public class LoginController {
             if ((loginAccount.isBanned())) {
 
                 Account account = accountList.searchUsername(loginAccount.getUsername());
-                //เพิ่มจำนวน การพยายามเข้าใช้งาน ของ user ที่ถูกแบน
                 dataSource.writeData(accountList);
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -57,18 +56,55 @@ public class LoginController {
 
                 alert.showAndWait();
 
+            } else {
+                //check password ของ loginAccount ว่า ตรงกับที่ user กรอกเข้ามา
+                if (!(loginAccount.isPassword(passwordStr))) {
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Error!!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Please check your information and try again.");
+
+                    alert.showAndWait();
+                }else{
+                    Account account = accountList.searchUsername(loginAccount.getUsername());
+                    dataSource.writeData(accountList);
+
+                    if(loginAccount.getType().equals("User")){
+                        try {
+                            FXRouter.goTo("อย่าลืมมาใส่ route",loginAccount);
+                        } catch (IOException e) {
+                            System.err.println("ไปที่หน้า System for user ไม่ได้");
+                            System.err.println("ให้ตรวจสอบการกำหนด route");
+                        }
+                    }
+
+                    else if(loginAccount.getType().equals("Admin")){
+                        try {
+                            FXRouter.goTo("อย่าลืมมาใส่ route",loginAccount);
+                        } catch (IOException e) {
+                            System.err.println("ไปที่หน้า System for admin ไม่ได้");
+                            System.err.println("ให้ตรวจสอบการกำหนด route");
+                        }
+                    }
+
+                    else if(loginAccount.getType().equals("Officer")){
+                        try {
+                            FXRouter.goTo("อย่าลืมมาใส่ route",loginAccount);
+                        } catch (IOException e) {
+                            System.err.println("ไปที่หน้า System for admin ไม่ได้");
+                            System.err.println("ให้ตรวจสอบการกำหนด route");
+                        }
+                    }
+                }
+
+                // clear ช่อง TextField
+                usernameTextField.clear();
+                passwordPasswordField.clear();
+
             }
-            //user ผิด passผิด
-            //login ได่ แยกเป็นadmin officer student
-
         }
-
-        // clear ช่อง TextField
-        usernameTextField.clear();
-        passwordPasswordField.clear();
-
     }
-
 
 
 

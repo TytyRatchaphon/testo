@@ -100,6 +100,15 @@ public class AccountFileDataSource implements DataSource<AccountList>{
                     ));
                 }
 
+                if(type.equals("Admin")){
+                    accountList.addAccount(new Account(
+                            data[1].trim(),
+                            data[2].trim(),
+                            data[3].trim(),
+                            Integer.parseInt(data[4].trim())
+                    ));
+                }
+
             }
 
         } catch (FileNotFoundException e) {
