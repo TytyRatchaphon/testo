@@ -64,7 +64,7 @@ public class LoginController {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Error!!");
                     alert.setHeaderText(null);
-                    alert.setContentText("Please check your information and try again.");
+                    alert.setContentText("Please check your Password.");
 
                     alert.showAndWait();
                 }else{
@@ -125,6 +125,14 @@ public class LoginController {
             System.err.println("ไปทีหน้า reset ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
             System.err.println(ex);
+        }
+    }
+    public void handleBackButton(ActionEvent action){
+        try {
+            com.github.saacsos.FXRouter.goTo("home");
+        } catch (IOException e) {
+            System.err.println("ไปที่หน้า login ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกำหนด route");
         }
     }
 }

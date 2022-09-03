@@ -10,13 +10,8 @@ import com.github.saacsos.FXRouter;
 
 public class HomeAdminController {
 
+
     private Account account;
-    private Label usernameLabel;
-
-    private void showMemberCardData() {
-        usernameLabel.setText(account.getUsername());
-    }
-
 
     public void handleRegisterOfficerButton(ActionEvent actionEvent) {
         try {

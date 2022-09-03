@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.appeal_system.controllers.SubmittedController">
+   <children>
+      <Button layoutX="721.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+      <Label layoutX="60.0" layoutY="215.0" text="Name" />
+      <Label layoutX="60.0" layoutY="242.0" text="Nickname" />
+      <Label layoutX="58.0" layoutY="266.0" text="Student ID" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="118.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="442.0" layoutY="215.0" text="Name" />
+      <Label layoutX="442.0" layoutY="242.0" text="Nickname" />
+      <Label layoutX="440.0" layoutY="266.0" text="Student ID" />
+      <Label layoutX="60.0" layoutY="461.0" text="Name" />
+      <Label layoutX="58.0" layoutY="489.0" text="Nickname" />
+      <Label layoutX="57.0" layoutY="516.0" text="Student ID" />
+      <Label layoutX="442.0" layoutY="461.0" text="Name" />
+      <Label layoutX="441.0" layoutY="489.0" text="Nickname" />
+      <Label layoutX="440.0" layoutY="516.0" text="Student ID" />
+      <ImageView fx:id="imageCase" fitHeight="194.0" fitWidth="190.0" layoutX="92.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="132.0" layoutY="215.0" text="Thanwaralee Thanestummaroj" />
+      <Label layoutX="132.0" layoutY="242.0" text="Case" />
+      <Label layoutX="131.0" layoutY="266.0" text="6410450150" />
+      <Label layoutX="515.0" layoutY="215.0" text="Ratchapho Paengbuddeen" />
+      <Label layoutX="515.0" layoutY="242.0" text="Tyty" />
+      <Label layoutX="515.0" layoutY="266.0" text="6410450249" />
+      <Label layoutX="131.0" layoutY="461.0" text="Nataya Akpichitmarn" />
+      <Label layoutX="131.0" layoutY="489.0" text="Rada" />
+      <Label layoutX="131.0" layoutY="516.0" text="6410450869" />
+      <Label layoutX="521.0" layoutY="461.0" text="Pakkapol Sarakul" />
+      <Label layoutX="522.0" layoutY="489.0" text="Peem" />
+      <Label layoutX="521.0" layoutY="516.0" text="6410451261" />
+      <ImageView fx:id="imageTyty" fitHeight="194.0" fitWidth="200.0" layoutX="472.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageRada" fitHeight="163.0" fitWidth="200.0" layoutX="96.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imagePeem" fitHeight="163.0" fitWidth="200.0" layoutX="489.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>
