@@ -24,7 +24,9 @@ public class ProjectApplication extends Application {
         FXRouter.when("register", packageStr+"registration.fxml");
         FXRouter.when("officer_register",packageStr+"officer_registration.fxml");
         FXRouter.when("reset",packageStr+"reset_password.fxml");
+        FXRouter.when("home_admin",packageStr+"home_admin.fxml");
         FXRouter.when("user_name_list",packageStr+"user_name_list.fxml");
+        FXRouter.when("register_officer",packageStr+"register_officer.fxml");
         FXRouter.when("report_insecurity",packageStr+"report_insecurity.fxml");
     }
 

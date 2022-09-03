@@ -27,7 +27,7 @@ public class Account {
 
     }
     //for csv
-    public Account(String username,String name,String lastname,String password, String status,Integer countLogin){
+    public Account(String username,String password,String name,String lastname, String status,Integer countLogin){
         this(username, name, lastname, password);
         this.accountStatus = status;
         this.loginCount = countLogin;

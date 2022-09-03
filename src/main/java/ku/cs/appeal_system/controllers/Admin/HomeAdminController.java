@@ -17,7 +17,7 @@ public class HomeAdminController {
 
     public void handleRegisterOfficerButton(ActionEvent actionEvent) {
         try {
-            com.github.saacsos.FXRouter.goTo("");
+            com.github.saacsos.FXRouter.goTo("register_officer");
         } catch (IOException ex) {
             System.err.println("ไปทีหน้า register ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");

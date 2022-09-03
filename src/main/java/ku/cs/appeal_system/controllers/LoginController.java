@@ -81,7 +81,7 @@ public class LoginController {
 
                     else if(loginAccount.getType().equals("Admin")){
                         try {
-                            FXRouter.goTo("อย่าลืมมาใส่ route",loginAccount);
+                            FXRouter.goTo("home_admin",loginAccount);
                         } catch (IOException e) {
                             System.err.println("ไปที่หน้า System for admin ไม่ได้");
                             System.err.println("ให้ตรวจสอบการกำหนด route");
