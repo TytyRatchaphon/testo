@@ -55,7 +55,7 @@ public class RegistrationController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Error!!");
                 alert.setHeaderText(null);
-                alert.setContentText("Please check your information and try again.");
+                alert.setContentText("Username is unavailable");
 
                 alert.showAndWait();
             }

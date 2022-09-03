@@ -23,6 +23,7 @@ public class LoginController {
     private AccountList accountList;
     private AccountFileDataSource dataSource;
 
+
     @FXML public void handleLoginButton(ActionEvent event) {
         String usernameStr = usernameTextField.getText();
         String passwordStr = passwordPasswordField.getText();
@@ -42,21 +43,23 @@ public class LoginController {
             alert.setContentText("Please check your information and try again.");
 
             alert.showAndWait();
-        }
+        } else {
+            if ((loginAccount.isBanned())) {
 
+                Account account = accountList.searchUsername(loginAccount.getUsername());
+                //เพิ่มจำนวน การพยายามเข้าใช้งาน ของ user ที่ถูกแบน
+                dataSource.writeData(accountList);
 
-        if ((loginAccount.isBanned())) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error!!");
+                alert.setHeaderText(null);
+                alert.setContentText("This account was banned.");
 
-            Account account = accountList.searchUsername(loginAccount.getUsername());
-            //เพิ่มจำนวน การพยายามเข้าใช้งาน ของ user ที่ถูกแบน
-            dataSource.writeData(accountList);
+                alert.showAndWait();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error!!");
-            alert.setHeaderText(null);
-            alert.setContentText("This account was banned.");
-
-            alert.showAndWait();
+            }
+            //user ผิด passผิด
+            //login ได่ แยกเป็นadmin officer student
 
         }
 
