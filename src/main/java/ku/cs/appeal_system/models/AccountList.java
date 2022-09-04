@@ -4,12 +4,17 @@ import java.util.ArrayList;
 
 public class AccountList {
     private ArrayList<Account> accounts;
+    private ArrayList<OfficerAccount> OfficerAccounts;
 
     public AccountList(){
         accounts = new ArrayList<>();
+        OfficerAccounts = new ArrayList<>();
     }
     public void addAccount(Account account) {
         accounts.add(account);
+    }
+    public void addOfficerAccount(OfficerAccount account) {
+        OfficerAccounts.add(account);
     }
 
     public ArrayList<Account> getAllAccounts(){return accounts; }

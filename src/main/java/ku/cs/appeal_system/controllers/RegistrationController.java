@@ -70,7 +70,7 @@ public class RegistrationController {
 
                 } else {
                     //เขียนไฟล์ --> new Account
-                    accounts.addAccount(new Account(nameStr,lastnameStr ,usernameStr ,passwordStr ));
+                    accounts.addAccount(new Account(nameStr,lastnameStr ,usernameStr ,passwordStr));
                     dataSource.writeData(accounts);
 
                     try {

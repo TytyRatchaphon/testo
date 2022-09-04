@@ -39,6 +39,8 @@ public class RegisterOfficerController {
         String passwordStr = newPasswordPasswordField.getText(); // ตัวแปร password
         // รับข้อมูล จาก PasswordField ข้อมูลที่รับเป็น String เสมอ
         String confirmPasswordStr = confirmPasswordField.getText(); // ตัวแปร confirmPassword
+        String status = "Officer";
+        Integer countLogin = 0;
 
 
 
@@ -70,7 +72,7 @@ public class RegisterOfficerController {
 
                 } else {
                     //เขียนไฟล์ --> new Account
-                    accounts.addAccount(new OfficerAccount(usernameStr,passwordStr,nameStr,lastnameStr,agency));
+                    accounts.addAccount(new OfficerAccount(nameStr,lastnameStr,usernameStr,passwordStr,status,agency,countLogin));
                     dataSource.writeData(accounts);
 
                     try {

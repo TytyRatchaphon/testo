@@ -1,23 +1,14 @@
 package ku.cs.appeal_system.models;
 
 public class OfficerAccount extends Account {
-    private String agency;
-
-    public OfficerAccount(String username,String password,String name,String lastname, String agency) {
-        super(username,password, name, lastname);
+    public OfficerAccount(String name,String lastname,String username,String password, String status,String agency,Integer loginCount) {
+        super(name,lastname, username, password,status,agency,loginCount);
         setType("Officer");
-        this.agency = agency;
+        this.setAgency(agency);
     }
 
-    public void setAgency(String agency) {
-        this.agency = agency;
-    }
-
-    public String getAgency() {
-        return agency;
-    }
     @Override
     public String toCsv() {
-            return getType()+","+getUsername()+","+getPassword()+","+getStatus()+","+getLoginCount()+","+getAgency();
+            return getType()+","+getName()+","+getLastname()+","+getUsername()+","+getPassword()+","+getStatus()+","+getAgency()+","+getLoginCount();
         }
 }

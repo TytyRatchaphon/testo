@@ -3,6 +3,7 @@ package ku.cs.appeal_system.services;
 import ku.cs.appeal_system.models.AccountList;
 import ku.cs.appeal_system.models.Account;
 import ku.cs.appeal_system.models.AdminAccount;
+import ku.cs.appeal_system.models.OfficerAccount;
 
 import java.io.*;
 
@@ -11,6 +12,7 @@ public class AccountFileDataSource implements DataSource<AccountList>{
     private String filename;
 
     private AccountList accountList = new AccountList();
+    private AccountList officerAccountList = new AccountList();
 
     public AccountFileDataSource(){
         this("Data","Accounts.csv");
@@ -105,6 +107,27 @@ public class AccountFileDataSource implements DataSource<AccountList>{
                             data[5].trim(),
                             Integer.parseInt(data[6].trim())
                     ));
+                }
+                if(type.equals("Officer")){
+                    accountList.addAccount(new OfficerAccount(
+                            data[1].trim(),
+                            data[2].trim(),
+                            data[3].trim(),
+                            data[4].trim(),
+                            data[5].trim(),
+                            data[6].trim(),
+                            Integer.parseInt(data[7].trim())
+                    ));
+                    accountList.addOfficerAccount(new OfficerAccount(
+                            data[1].trim(),
+                            data[2].trim(),
+                            data[3].trim(),
+                            data[4].trim(),
+                            data[5].trim(),
+                            data[6].trim(),
+                            Integer.parseInt(data[7].trim())
+                    ));
+
                 }
 
             }

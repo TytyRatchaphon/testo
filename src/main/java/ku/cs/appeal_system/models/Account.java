@@ -1,8 +1,5 @@
 package ku.cs.appeal_system.models;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Account {
     private String username;
     private String password;
@@ -16,6 +13,7 @@ public class Account {
     private String lastname;
 
     private String type;
+    private String agency;
 
     //NewUser
     public Account(String name, String lastname, String username, String password) {
@@ -42,6 +40,16 @@ public class Account {
         this.loginCount = loginCount;
     }
 
+    public Account(String name,String lastname,String username,String password, String status,String agency,Integer loginCount){
+        this.name = name;
+        this.lastname = lastname;
+        this.username = username;
+        this.password = password;
+        this.accountStatus = status;
+        this.agency = agency;
+        this.loginCount = loginCount;
+    }
+
 
     public String getUsername() {
         return username;
@@ -52,6 +60,10 @@ public class Account {
     }
 
     public void setType(String type){this.type = type;}
+    public void setAgency(String agency){this.agency = agency;}
+    public String getAgency() {
+        return agency;
+    }
 
     public void setLoginCount(){this.loginCount++;}
     public void setLoginCount(Integer loginCount) {
