@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.appeal_system.controllers.">
+   <children>
+      <ListView layoutX="27.0" layoutY="56.0" prefHeight="518.0" prefWidth="378.0" />
+      <Label layoutX="143.0" layoutY="18.0" prefHeight="27.0" prefWidth="146.0" text="List Of Complaints" textFill="#0007ff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="56.0" text="Selected Complaint Detail" textFill="#0200ff">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="466.0" layoutY="119.0" text="Topic" />
+      <Label layoutX="509.0" layoutY="119.0" prefHeight="18.0" prefWidth="232.0" text="complaintTopicLable" />
+      <Label layoutX="466.0" layoutY="155.0" text="Detail" />
+      <Label layoutX="509.0" layoutY="154.0" prefHeight="18.0" prefWidth="232.0" text="complaintDetailLable" />
+      <Button layoutX="745.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+   </children>
+</AnchorPane>

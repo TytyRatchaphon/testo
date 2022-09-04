@@ -91,9 +91,9 @@ public class LoginController {
 
                     if(loginAccount.getType().equals("Officer")){
                         try {
-                            FXRouter.goTo("อย่าลืมมาใส่ route",loginAccount);
+                            FXRouter.goTo("home_officer",loginAccount);
                         } catch (IOException e) {
-                            System.err.println("ไปที่หน้า System for admin ไม่ได้");
+                            System.err.println("ไปที่หน้า System for officer ไม่ได้");
                             System.err.println("ให้ตรวจสอบการกำหนด route");
                         }
                     }
