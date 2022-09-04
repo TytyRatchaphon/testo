@@ -6,6 +6,8 @@ public class Complaint {
 
     private String detail;
 
+    private String status;
+
     public Complaint(String topic, String detail) {
         this.topic = topic;
         this.detail = detail;
@@ -18,6 +20,8 @@ public class Complaint {
     public String getDetail() {
         return detail;
     }
+
+    public String getStatus() { return status; }
 
     public String toCsv() {
         return topic+","+detail;
