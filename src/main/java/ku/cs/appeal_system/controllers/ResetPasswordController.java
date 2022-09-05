@@ -16,6 +16,12 @@ public class ResetPasswordController {
     @FXML private PasswordField currentPasswordField;
     @FXML private PasswordField newPasswordField;
     @FXML private PasswordField confirmNewPasswordField;
+
+    private Account account;
+
+    public void initialize(){
+        account = (Account)FXRouter.getData();
+    }
     //private Account loginAccount;
 
     public void handleSaveButton(ActionEvent actionEvent){
@@ -61,7 +67,15 @@ public class ResetPasswordController {
             alert.showAndWait();
 
             try {
-                FXRouter.goTo("login");
+                if(account.getType().equals("Admin")){
+                    FXRouter.goTo("home_admin");
+                }
+                else if(account.getType().equals("Officer")){
+                    FXRouter.goTo("home_officer");
+                }
+                else if(account.getType().equals("User")){
+                    FXRouter.goTo("home_student");
+                }
             } catch (IOException e) {
                 System.err.println("ไปที่หน้า login ไม่ได้");
                 System.err.println("ให้ตรวจสอบการกำหนด route");
@@ -71,7 +85,16 @@ public class ResetPasswordController {
     }
     public void handleBackButton(ActionEvent action){
         try {
-            FXRouter.goTo("login");
+            if(account.getType().equals("Admin")){
+                FXRouter.goTo("home_admin");
+            }
+            else if(account.getType().equals("Officer")){
+                FXRouter.goTo("home_officer");
+            }
+            else if(account.getType().equals("User")){
+                FXRouter.goTo("home_student");
+            }
+
         } catch (IOException e) {
             System.err.println("ไปที่หน้า login ไม่ได้");
             System.err.println("ให้ตรวจสอบการกำหนด route");

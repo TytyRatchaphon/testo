@@ -13,6 +13,10 @@ public class HomeAdminController {
 
     private Account account;
 
+    public void initialize(){
+        account = (Account)FXRouter.getData();
+    }
+
     public void handleRegisterOfficerButton(ActionEvent actionEvent) {
         try {
             com.github.saacsos.FXRouter.goTo("register_officer");
@@ -25,7 +29,7 @@ public class HomeAdminController {
 
     public void handleResetPasswordButton(ActionEvent actionEvent) {
         try {
-            com.github.saacsos.FXRouter.goTo("reset");
+            com.github.saacsos.FXRouter.goTo("reset",account);
         } catch (IOException ex) {
             System.err.println("ไปทีหน้า reset ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
@@ -55,7 +59,7 @@ public class HomeAdminController {
 
     public void handleLogoutButton(ActionEvent actionEvent){
         try {
-            com.github.saacsos.FXRouter.goTo("home");
+            com.github.saacsos.FXRouter.goTo("login");
         } catch (IOException ex) {
             System.err.println("ไปทีหน้า reset ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
