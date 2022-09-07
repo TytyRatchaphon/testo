@@ -9,7 +9,6 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.appeal_system.controllers.LoginController">
     <children>
-      <Button layoutX="85.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleResetPasswordButton" prefHeight="25.0" prefWidth="130.0" text="Forgot Password?" />
         <Label layoutX="367.0" layoutY="25.0" text="Sign in">
             <font>
                 <Font size="27.0" />
@@ -26,6 +25,6 @@
          </font>
       </Label>
       <PasswordField fx:id="passwordPasswordField" layoutX="76.0" layoutY="288.0" />
-      <Button layoutX="721.0" layoutY="550.0" mnemonicParsing="false" text="Back" onAction="#handleBackButton"/>
+      <Button layoutX="721.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
     </children>
 </AnchorPane>

@@ -118,15 +118,6 @@ public class LoginController {
         }
     }
 
-    public void handleResetPasswordButton(ActionEvent actionEvent) {
-        try {
-            FXRouter.goTo("reset");
-        } catch (IOException ex) {
-            System.err.println("ไปทีหน้า reset ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกําหนด route");
-            System.err.println(ex);
-        }
-    }
     public void handleBackButton(ActionEvent action){
         try {
             com.github.saacsos.FXRouter.goTo("home");

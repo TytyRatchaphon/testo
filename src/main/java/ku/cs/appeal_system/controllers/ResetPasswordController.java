@@ -36,7 +36,16 @@ public class ResetPasswordController {
             alert.setContentText("Please fill your information.");
 
             alert.showAndWait();
-        } else if (newPasswordString.equals(currentPasswordString)){
+        }
+//        else if (usernameString.equals(account.getUsername())){
+//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//            alert.setTitle("Error!!");
+//            alert.setHeaderText(null);
+//            alert.setContentText("Your username is not match.");
+//
+//            alert.showAndWait();
+//        }
+        else if (newPasswordString.equals(currentPasswordString)){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");
             alert.setHeaderText(null);
