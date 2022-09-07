@@ -73,7 +73,7 @@ public class LoginController {
 
                     if(loginAccount.getType().equals("User")){
                         try {
-                            FXRouter.goTo("อย่าลืมมาใส่ route",loginAccount);
+                            FXRouter.goTo("home_student",loginAccount);
                         } catch (IOException e) {
                             System.err.println("ไปที่หน้า System for user ไม่ได้");
                             System.err.println("ให้ตรวจสอบการกำหนด route");
