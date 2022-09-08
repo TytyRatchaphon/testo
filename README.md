@@ -5,5 +5,9 @@
     * (ออกแบบ View สำหรับ OfficerRegister และเขียน Controller ของ OfficerRegister) (ภคพล สาระกุล)
     * (ออกแบบ View สำหรับ ResetPassword และเขียน Controller ของ ResetPassword) (รัชพล แพงบุดดี)
 
-
+* ครั้งที่ 2 (9/9/65)
+    * (อ่านเขียนไฟล์ Accounts ทำ Register)(รัชพล แพงบุดดี)
+    * (อ่านเขียนไฟล์ Complaints และทำ HomeStudentController)(ภคพล สาระกุล)
+    * (ทำ HomeAdminController)(ธัญวราลี ธเนศธรรมโรจน์)
+    * (ทำ HomeOfficerController,ComplaintsListController)(ณฐยา เอกพิชิตมาร)
 
