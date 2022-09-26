@@ -89,43 +89,44 @@ public class AccountFileDataSource implements DataSource<AccountList>{
             while( (line = buffer.readLine()) != null){
 
                 String[] data = line.split(",");
-                String type = data[0].trim();
+                String type = data[0];
                 if(type.equals("Admin")){
                     accountList.addAccount(new AdminAccount(
-                            data[1].trim(),
-                            data[2].trim(),
-                            data[3].trim(),
-                            Integer.parseInt(data[4].trim())
+                            data[1],
+                            data[2],
+                            data[3],
+                            Integer.parseInt(data[4])
                     ));
                 }
                 if(type.equals("User")){
                     accountList.addAccount(new Account(
-                            data[1].trim(),
-                            data[2].trim(),
-                            data[3].trim(),
-                            data[4].trim(),
-                            data[5].trim(),
-                            Integer.parseInt(data[6].trim())
+                            data[1],
+                            data[2],
+                            data[3],
+                            data[4],
+                            data[5],
+                            data[6],
+                            Integer.parseInt(data[7])
                     ));
                 }
                 if(type.equals("Officer")){
                     accountList.addAccount(new OfficerAccount(
-                            data[1].trim(),
-                            data[2].trim(),
-                            data[3].trim(),
-                            data[4].trim(),
-                            data[5].trim(),
-                            data[6].trim(),
+                            data[1],
+                            data[2],
+                            data[3],
+                            data[4],
+                            data[5],
+                            data[6],
                             Integer.parseInt(data[7].trim())
                     ));
                     accountList.addOfficerAccount(new OfficerAccount(
-                            data[1].trim(),
-                            data[2].trim(),
-                            data[3].trim(),
-                            data[4].trim(),
-                            data[5].trim(),
-                            data[6].trim(),
-                            Integer.parseInt(data[7].trim())
+                            data[1],
+                            data[2],
+                            data[3],
+                            data[4],
+                            data[5],
+                            data[6],
+                            Integer.parseInt(data[7])
                     ));
 
                 }

@@ -12,6 +12,8 @@ import ku.cs.appeal_system.services.AccountFileDataSource;
 import ku.cs.appeal_system.services.DataSource;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import ku.cs.appeal_system.models.Account;
 
 public class RegisterOfficerController {
     @FXML private TextField newNameTextField;
@@ -41,6 +43,7 @@ public class RegisterOfficerController {
         String confirmPasswordStr = confirmPasswordField.getText(); // ตัวแปร confirmPassword
         String status = "Officer";
         Integer countLogin = 0;
+        String lastLogin = String.valueOf(LocalDateTime.now());
 
 
 

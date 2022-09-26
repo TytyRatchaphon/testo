@@ -46,65 +46,64 @@ public class LoginController {
         }
         if ((loginAccount.isBanned())) {
 
-                Account account = accountList.searchUsername(loginAccount.getUsername());
-                account.setLoginCount();
-                dataSource.writeData(accountList);
+            Account account = accountList.searchUsername(loginAccount.getUsername());
+            account.setLoginCount();
+            dataSource.writeData(accountList);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error!!");
+            alert.setHeaderText(null);
+            alert.setContentText("This account was banned.");
+
+            alert.showAndWait();
+
+        } else {
+            //check password ของ loginAccount ว่า ตรงกับที่ user กรอกเข้ามา
+            if (!(loginAccount.isPassword(passwordStr))) {
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Error!!");
                 alert.setHeaderText(null);
-                alert.setContentText("This account was banned.");
+                alert.setContentText("Please check your Password.");
 
                 alert.showAndWait();
+            }else{
+                dataSource.writeData(accountList);
 
-            } else {
-                //check password ของ loginAccount ว่า ตรงกับที่ user กรอกเข้ามา
-                if (!(loginAccount.isPassword(passwordStr))) {
-
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Error!!");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Please check your Password.");
-
-                    alert.showAndWait();
-                }else{
-                    Account account = accountList.searchUsername(loginAccount.getUsername());
-                    dataSource.writeData(accountList);
-
-                    if(loginAccount.getType().equals("User")){
-                        try {
-                            FXRouter.goTo("home_student",loginAccount);
-                        } catch (IOException e) {
-                            System.err.println("ไปที่หน้า System for user ไม่ได้");
-                            System.err.println("ให้ตรวจสอบการกำหนด route");
-                        }
-                    }
-
-                    if(loginAccount.getType().equals("Admin")){
-                        try {
-                            FXRouter.goTo("home_admin",loginAccount);
-                        } catch (IOException e) {
-                            System.err.println("ไปที่หน้า System for admin ไม่ได้");
-                            System.err.println("ให้ตรวจสอบการกำหนด route");
-                        }
-                    }
-
-                    if(loginAccount.getType().equals("Officer")){
-                        try {
-                            FXRouter.goTo("home_officer",loginAccount);
-                        } catch (IOException e) {
-                            System.err.println("ไปที่หน้า System for officer ไม่ได้");
-                            System.err.println("ให้ตรวจสอบการกำหนด route");
-                        }
+                if(loginAccount.getType().equals("User")){
+                    try {
+                        FXRouter.goTo("home_student",loginAccount);
+                    } catch (IOException e) {
+                        System.err.println("ไปที่หน้า System for user ไม่ได้");
+                        System.err.println("ให้ตรวจสอบการกำหนด route");
                     }
                 }
 
-                // clear ช่อง TextField
-                usernameTextField.clear();
-                passwordPasswordField.clear();
+                else if(loginAccount.getType().equals("Admin")){
+                    try {
+                        FXRouter.goTo("home_admin",loginAccount);
+                    } catch (IOException e) {
+                        System.err.println("ไปที่หน้า System for admin ไม่ได้");
+                        System.err.println("ให้ตรวจสอบการกำหนด route");
+                    }
+                }
 
+                else if(loginAccount.getType().equals("Officer")){
+                    try {
+                        FXRouter.goTo("home_officer",loginAccount);
+                    } catch (IOException e) {
+                        System.err.println("ไปที่หน้า System for officer ไม่ได้");
+                        System.err.println("ให้ตรวจสอบการกำหนด route");
+                    }
+                }
             }
+
+            // clear ช่อง TextField
+            usernameTextField.clear();
+            passwordPasswordField.clear();
+
         }
+    }
 
 
 
@@ -118,6 +117,15 @@ public class LoginController {
         }
     }
 
+    public void handleResetPasswordButton(ActionEvent actionEvent) {
+        try {
+            FXRouter.goTo("reset");
+        } catch (IOException ex) {
+            System.err.println("ไปทีหน้า reset ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+            System.err.println(ex);
+        }
+    }
     public void handleBackButton(ActionEvent action){
         try {
             com.github.saacsos.FXRouter.goTo("home");

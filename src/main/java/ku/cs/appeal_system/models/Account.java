@@ -1,5 +1,8 @@
 package ku.cs.appeal_system.models;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Account {
     private String username;
     private String password;
@@ -14,6 +17,8 @@ public class Account {
 
     private String type;
     private String agency;
+    private String imagePath;
+    //private LocalDateTime lastLogin ;
 
     //NewUser
     public Account(String name, String lastname, String username, String password) {
@@ -23,13 +28,17 @@ public class Account {
         this.username = username;
         this.password = password;
         this.loginCount = 0;
+        this.imagePath = "images/user_default.png";
 
     }
     //for csv
-    public Account(String name,String lastname,String username,String password, String status,Integer countLogin){
+    public Account(String name,String lastname,String username,String password, String status,String imagePath,Integer countLogin){
         this(name, lastname, username, password);
         this.accountStatus = status;
+        this.imagePath = imagePath;
+//        this.lastLogin = LocalDateTime.parse(lastLogin);
         this.loginCount = countLogin;
+
 
     }
     //extend for Admin
@@ -40,7 +49,7 @@ public class Account {
         this.loginCount = loginCount;
     }
 
-    public Account(String name,String lastname,String username,String password, String status,String agency,Integer loginCount){
+    public Account(String name,String lastname,String username,String password, String status,String agency,String imagePath,Integer loginCount){
         this.name = name;
         this.lastname = lastname;
         this.username = username;
@@ -48,7 +57,11 @@ public class Account {
         this.accountStatus = status;
         this.agency = agency;
         this.loginCount = loginCount;
+        this.imagePath = imagePath;
+//        this.lastLogin = LocalDateTime.parse(lastLogin);
     }
+
+
 
 
     public String getUsername() {
@@ -93,10 +106,35 @@ public class Account {
         return accountStatus;
     }
     public Integer getLoginCount(){return loginCount;}
+    public String getImagePath() {
+        return imagePath;
+    }
+//    public String getLastLogin() { return lastLogin.toString(); }
+    public void setImagePath() {
+        this.imagePath = "images/user_default.png";
+    }
+    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+    public void setStatus() {
+        this.accountStatus = "Banned";
+    }
+    public void setStatus(String unbanned){
+        this.accountStatus = "Not Banned";
+    }
+//    public void setLastLogin(){
+//        this.lastLogin = LocalDateTime.now();
+//        lastLogin.toString();
+//    }
+
+    public String toCsv(){
+        return type+","+name+","+lastname+","+username+","+password+","+accountStatus+","+imagePath+","+loginCount;
+    }
+
+    @Override
     public String toString(){
+        //ใช้ DateTimeFormatter showListview
+//        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//        String formatDateTime = lastLogin.format(format);
         return  type+","+username+","+accountStatus+","+loginCount;
     }
-    public String toCsv(){
-        return type+","+name+","+lastname+","+username+","+password+","+accountStatus+","+loginCount;
-    }
 }
+

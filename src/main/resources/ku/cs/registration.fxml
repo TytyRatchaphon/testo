@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -26,5 +27,7 @@
       <PasswordField fx:id="confirmPasswordPasswordField" layoutX="319.0" layoutY="430.0" />
       <Button layoutX="80.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
       <TextField fx:id="newLastnameTextField" layoutX="325.0" layoutY="223.0" />
+      <ImageView fx:id="userImageView" fitHeight="183.0" fitWidth="200.0" layoutX="537.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="611.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleUploadImageButton" text="Upload" />
    </children>
 </AnchorPane>
