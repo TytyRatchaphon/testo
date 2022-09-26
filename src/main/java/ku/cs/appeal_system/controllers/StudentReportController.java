@@ -20,6 +20,7 @@ public class StudentReportController {
     private TextField reportTopicTextField;
     @FXML
     private TextField reportDetailTextField;
+    private String reportStatus = "not completed";
 
     private Account account;
     public void initialize(){
@@ -33,8 +34,9 @@ public class StudentReportController {
 
         String topicStr = reportTopicTextField.getText();
         String detailStr = reportDetailTextField.getText();
+        String statusStr = reportStatus;
 
-        Complaints.addComplaint(new Complaint(topicStr,detailStr));
+        Complaints.addComplaint(new Complaint(topicStr,detailStr,statusStr));
         dataSource.writeData(Complaints);
 
         reportTopicTextField.clear();

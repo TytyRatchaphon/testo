@@ -86,7 +86,8 @@ public class ComplaintFileDataSource implements DataSource<ComplaintList> {
                 String[] data = line.split(",");
                 Complaint complaint = new Complaint(
                         data[0].trim(),
-                        data[1].trim()
+                        data[1].trim(),
+                        data[2].trim()
                 );
 
                 complaintList.addComplaint(complaint);
@@ -107,4 +108,6 @@ public class ComplaintFileDataSource implements DataSource<ComplaintList> {
 
         return complaintList;
     }
+
+    public ComplaintList getAllComplaintList() { return complaintList; }
 }
