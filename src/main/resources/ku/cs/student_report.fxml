@@ -8,16 +8,18 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.appeal_system.controllers.StudentReportController">
    <children>
-      <TextField fx:id="reportTopicTextField" layoutX="262.0" layoutY="259.0" prefHeight="26.0" prefWidth="274.0" />
-      <TextField fx:id="reportDetailTextField" layoutX="263.0" layoutY="324.0" prefHeight="26.0" prefWidth="274.0" />
+      <TextField fx:id="reportTopicTextField" layoutX="262.0" layoutY="259.0" prefHeight="26.0" prefWidth="274.0" promptText="Enter your Topic" />
+      <TextField fx:id="reportDetailTextField" layoutX="263.0" layoutY="324.0" prefHeight="26.0" prefWidth="274.0" promptText="Give us more detail." />
       <Label layoutX="263.0" layoutY="232.0" text="Topic" />
       <Label layoutX="263.0" layoutY="300.0" text="Detail" />
-      <Button layoutX="372.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
+      <Button layoutX="372.0" layoutY="425.0" mnemonicParsing="false" onAction="#handleSubmitButton" text="Submit" />
       <Label layoutX="357.0" layoutY="104.0" text="Student">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Button layoutX="51.0" layoutY="541.0" mnemonicParsing="false" onAction="#handleBackButton" text="back" />
+      <TextField fx:id="studentIDTextField" layoutX="263.0" layoutY="380.0" prefHeight="26.0" prefWidth="274.0" promptText="Enter Student ID" />
+      <Label layoutX="263.0" layoutY="357.0" text="StudentID" />
    </children>
 </AnchorPane>

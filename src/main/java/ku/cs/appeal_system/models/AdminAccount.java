@@ -1,14 +1,14 @@
 package ku.cs.appeal_system.models;
 
 public class AdminAccount extends Account{
-    public AdminAccount(String username, String password , String status,int loginCount) {
-        super(username, password,status,loginCount);
+    public AdminAccount(String username, String password , String status,String lastLogin,int loginCount) {
+        super(username, password,status,lastLogin,loginCount);
         setType("Admin");
         setLoginCount(0);
     }
     @Override
     public String toCsv() {
-        return getType()+","+getUsername()+","+getPassword()+","+getStatus()+","+getLoginCount();
+        return getType()+","+getUsername()+","+getPassword()+","+getStatus()+","+getLastLogin()+","+getLoginCount();
     }
 }
 

@@ -42,6 +42,7 @@ public class UsernameListController {
         handleSelectedListView();
     }
     private void showListView() {
+        accountsList.sortAccount();
         accountListView.getItems().addAll(accountsList.getAllAccounts());
         accountListView.refresh();
     }
@@ -74,7 +75,6 @@ public class UsernameListController {
 
     @FXML
     public  void handleBanAccountButton(ActionEvent actionEvent){
-        //System.out.println(selectedAccount.getType());
         if(selectedAccount.isAdmin(selectedAccount.getType())){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Error!!");

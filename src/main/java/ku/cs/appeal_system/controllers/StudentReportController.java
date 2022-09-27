@@ -12,6 +12,7 @@ import ku.cs.appeal_system.services.ComplaintFileDataSource;
 import ku.cs.appeal_system.services.DataSource;
 
 import java.io.IOException;
+import java.time.format.TextStyle;
 
 
 public class StudentReportController {
@@ -20,6 +21,8 @@ public class StudentReportController {
     private TextField reportTopicTextField;
     @FXML
     private TextField reportDetailTextField;
+    @FXML
+    private TextField studentIDTextField;
     private String reportStatus = "not completed";
 
     private Account account;
@@ -35,12 +38,14 @@ public class StudentReportController {
         String topicStr = reportTopicTextField.getText();
         String detailStr = reportDetailTextField.getText();
         String statusStr = reportStatus;
+        String studentID  = studentIDTextField.getText();
 
-        Complaints.addComplaint(new Complaint(topicStr,detailStr,statusStr));
+        Complaints.addComplaint(new Complaint(topicStr,detailStr,statusStr,studentID));
         dataSource.writeData(Complaints);
 
         reportTopicTextField.clear();
         reportDetailTextField.clear();
+        studentIDTextField.clear();
     }
 
 

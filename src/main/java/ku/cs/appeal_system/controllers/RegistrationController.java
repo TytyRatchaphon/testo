@@ -134,13 +134,11 @@ public class RegistrationController {
                     accounts.addAccount(new Account(nameStr,lastnameStr ,usernameStr ,passwordStr));
                     Account account = accounts.searchUsername(usernameStr);
                     if (!(accountForSetImagePath==null)) {
-//                        System.out.println("เข้่า if");
                         account.setImagePath(accountForSetImagePath.getImagePath());//พอชี้เสร็จก็แก้ตัวที่เราชี้
                     }else{
-//                        System.out.println("เข้า else");
                         account.setImagePath();
                     }
-//                    account.setLastLogin();
+                    account.setLastLogin();
                     //เขียนไฟล์
                     dataSource.writeData(accounts);
 

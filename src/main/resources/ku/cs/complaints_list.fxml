@@ -26,5 +26,7 @@
       <Button layoutX="745.0" layoutY="561.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
       <Label layoutX="466.0" layoutY="193.0" text="Status" />
       <Label fx:id="complaintStatusLabel" layoutX="509.0" layoutY="192.0" prefHeight="18.0" prefWidth="232.0" text="complaintStatusLabel" />
+      <Button layoutX="429.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleSetProgressingComplaintButton" text="Progressing" />
+      <Button layoutX="564.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleSetCompleteComplaintButton" text="Completed" />
    </children>
 </AnchorPane>

@@ -18,7 +18,7 @@ public class Account {
     private String type;
     private String agency;
     private String imagePath;
-    //private LocalDateTime lastLogin ;
+    private LocalDateTime lastLogin ;
 
     //NewUser
     public Account(String name, String lastname, String username, String password) {
@@ -32,24 +32,25 @@ public class Account {
 
     }
     //for csv
-    public Account(String name,String lastname,String username,String password, String status,String imagePath,Integer countLogin){
+    public Account(String name,String lastname,String username,String password, String status,String imagePath,String lastLogin,Integer countLogin){
         this(name, lastname, username, password);
         this.accountStatus = status;
         this.imagePath = imagePath;
-//        this.lastLogin = LocalDateTime.parse(lastLogin);
+        this.lastLogin = LocalDateTime.parse(lastLogin);
         this.loginCount = countLogin;
 
 
     }
     //extend for Admin
-    public Account(String username, String password,String status,int loginCount) {
+    public Account(String username, String password,String status,String lastLogin,int loginCount) {
         this.username = username;
         this.password = password;
         this.accountStatus = status;
         this.loginCount = loginCount;
+        this.lastLogin = LocalDateTime.parse(lastLogin);
     }
 
-    public Account(String name,String lastname,String username,String password, String status,String agency,String imagePath,Integer loginCount){
+    public Account(String name,String lastname,String username,String password, String status,String agency,String imagePath,String lastLogin,Integer loginCount){
         this.name = name;
         this.lastname = lastname;
         this.username = username;
@@ -58,7 +59,7 @@ public class Account {
         this.agency = agency;
         this.loginCount = loginCount;
         this.imagePath = imagePath;
-//        this.lastLogin = LocalDateTime.parse(lastLogin);
+        this.lastLogin = LocalDateTime.parse(lastLogin);
     }
 
 
@@ -109,7 +110,7 @@ public class Account {
     public String getImagePath() {
         return imagePath;
     }
-//    public String getLastLogin() { return lastLogin.toString(); }
+    public String getLastLogin() { return lastLogin.toString(); }
     public void setImagePath() {
         this.imagePath = "images/user_default.png";
     }
@@ -120,21 +121,21 @@ public class Account {
     public void setStatus(String unbanned){
         this.accountStatus = "Not Banned";
     }
-//    public void setLastLogin(){
-//        this.lastLogin = LocalDateTime.now();
-//        lastLogin.toString();
-//    }
+    public void setLastLogin(){
+        this.lastLogin = LocalDateTime.now();
+        lastLogin.toString();
+    }
 
     public String toCsv(){
-        return type+","+name+","+lastname+","+username+","+password+","+accountStatus+","+imagePath+","+loginCount;
+        return type+","+name+","+lastname+","+username+","+password+","+accountStatus+","+imagePath+","+lastLogin+","+loginCount;
     }
 
     @Override
     public String toString(){
         //ใช้ DateTimeFormatter showListview
-//        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-//        String formatDateTime = lastLogin.format(format);
-        return  type+","+username+","+accountStatus+","+loginCount;
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = lastLogin.format(format);
+        return  type+","+username+","+accountStatus+","+formatDateTime+","+loginCount;
     }
 }
 

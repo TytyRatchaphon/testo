@@ -18,6 +18,14 @@ public class ComplaintList {
         return complaints;
     }
 
+    public Complaint searchTopic(String topic){
+        for(Complaint complaint:this.complaints){
+            if(complaint.isTopic(topic)){
+                return complaint;
+            }
+        }return null;
+    }
+
     public String toCsv() {
         String result = "";
         for (Complaint complaint : this.complaints){

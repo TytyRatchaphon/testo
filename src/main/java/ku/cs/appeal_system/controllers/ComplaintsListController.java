@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import ku.cs.appeal_system.models.Account;
 import ku.cs.appeal_system.models.Complaint;
 import ku.cs.appeal_system.models.ComplaintList;
 import ku.cs.appeal_system.services.ComplaintFileDataSource;
@@ -23,18 +24,23 @@ public class ComplaintsListController {
     @FXML
     private Label complaintStatusLabel;
 
-    DataSource<ComplaintList> dataSource = new ComplaintFileDataSource();
+    private ComplaintFileDataSource dataSource;
 
-    ComplaintList complaints = dataSource.readData();
+    private Complaint selectedComplaint;
+
+    private ComplaintList complaintList;
 
     public void initialize() {
+        dataSource = new ComplaintFileDataSource();
+        dataSource.readData();
+        complaintList = dataSource.getAllComplaintList();
         showListView();
         clearSelectedComplaint();
         handleSelectedListView();
     }
 
     private void showListView() {
-        complaintListView.getItems().addAll(complaints.getAllComplaints());
+        complaintListView.getItems().addAll(complaintList.getAllComplaints());
         complaintListView.refresh();
     }
 
@@ -44,7 +50,7 @@ public class ComplaintsListController {
                     @Override
                     public void changed(ObservableValue<? extends Complaint> observable,
                                         Complaint oldValue, Complaint newValue) {
-                        System.out.println(newValue + " is selected");
+                        selectedComplaint = newValue;
                         showSelectedComplaint(newValue);
                     }
                 });
@@ -60,6 +66,25 @@ public class ComplaintsListController {
         complaintTopicLabel.setText("");
         complaintDetailLabel.setText("");
         complaintStatusLabel.setText("");
+    }
+
+    @ FXML
+    public void handleSetProgressingComplaintButton(ActionEvent actionEvent){
+        String progressing = "Progressing";
+        selectedComplaint.setStatus(progressing);
+        complaintListView.refresh();
+        showSelectedComplaint(selectedComplaint);
+        dataSource.writeData(complaintList);
+    }
+    @ FXML
+    public void handleSetCompleteComplaintButton(ActionEvent actionEvent){
+        selectedComplaint.setStatusComplete();
+        complaintListView.refresh();
+        showSelectedComplaint(selectedComplaint);
+
+        Complaint complaint = complaintList.searchTopic(selectedComplaint.getTopic());
+        complaint.setStatusComplete();
+        dataSource.writeData(complaintList);
     }
 
     public void handleBackButton(ActionEvent action){

@@ -50,12 +50,12 @@ public class AccountList {
             }
         }return false; //วน account แล้วไม่เจอ username
     }
-//    public void sortAccount(){
-//        Comparator<Account> comparator = (c1, c2) -> {
-//            return c2.getLastLogin().compareTo(c1.getLastLogin());
-//        };
-//        Collections.sort(accounts, comparator);
-//    }
+    public void sortAccount(){
+        Comparator<Account> comparator = (c1, c2) -> {
+            return c2.getLastLogin().compareTo(c1.getLastLogin());
+        };
+        Collections.sort(accounts, comparator);
+    }
     public String toCsv() {
         String result = "";
         for (Account account : this.accounts){

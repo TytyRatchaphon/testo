@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.appeal_system.controllers.ReportListController">
    <children>
       <Separator layoutX="418.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="0.0" />

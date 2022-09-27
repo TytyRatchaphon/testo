@@ -95,7 +95,8 @@ public class AccountFileDataSource implements DataSource<AccountList>{
                             data[1],
                             data[2],
                             data[3],
-                            Integer.parseInt(data[4])
+                            data[4],
+                            Integer.parseInt(data[5])
                     ));
                 }
                 if(type.equals("User")){
@@ -106,7 +107,8 @@ public class AccountFileDataSource implements DataSource<AccountList>{
                             data[4],
                             data[5],
                             data[6],
-                            Integer.parseInt(data[7])
+                            data[7],
+                            Integer.parseInt(data[8])
                     ));
                 }
                 if(type.equals("Officer")){
@@ -117,7 +119,8 @@ public class AccountFileDataSource implements DataSource<AccountList>{
                             data[4],
                             data[5],
                             data[6],
-                            Integer.parseInt(data[7].trim())
+                            data[7],
+                            Integer.parseInt(data[8].trim())
                     ));
                     accountList.addOfficerAccount(new OfficerAccount(
                             data[1],
@@ -126,7 +129,8 @@ public class AccountFileDataSource implements DataSource<AccountList>{
                             data[4],
                             data[5],
                             data[6],
-                            Integer.parseInt(data[7])
+                            data[7],
+                            Integer.parseInt(data[8].trim())
                     ));
 
                 }

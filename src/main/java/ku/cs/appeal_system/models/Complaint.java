@@ -7,11 +7,13 @@ public class Complaint {
     private String detail;
 
     private String status = "not completed";
+    private String studentId;
 
-    public Complaint(String topic, String detail, String status) {
+    public Complaint(String topic, String detail, String status,String studentId) {
         this.topic = topic;
         this.detail = detail;
         this.status = status;
+        this.studentId = studentId;
     }
 
     public void setTopic(String topic) {
@@ -36,11 +38,21 @@ public class Complaint {
 
     public String getStatus() { return status; }
 
+    public boolean isTopic(String topic) {return this.topic.equals(topic);}
+
+    public void setStatusProgressing(String progressing) {
+        this.status = "Progressing";
+    }
+
+    public void setStatusComplete() {
+        this.status = "Complete";
+    }
+
     @Override
     public String toString() {
         return topic+", "+detail+", "+status;
     }
     public String toCsv() {
-        return topic+","+detail+","+status;
+        return topic+","+detail+","+status+","+studentId;
     }
 }

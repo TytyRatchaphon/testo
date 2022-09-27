@@ -10,7 +10,7 @@ public class ComplaintFileDataSource implements DataSource<ComplaintList> {
 
     private String fileName;
 
-    private ComplaintList complaintList = new ComplaintList();
+    private ComplaintList complaint = new ComplaintList();
 
     public ComplaintFileDataSource(){
         this("Data","Complaints.csv");
@@ -84,30 +84,21 @@ public class ComplaintFileDataSource implements DataSource<ComplaintList> {
 
             while ((line = buffer.readLine()) != null) {
                 String[] data = line.split(",");
-                Complaint complaint = new Complaint(
-                        data[0].trim(),
-                        data[1].trim(),
-                        data[2].trim()
+                 complaint.addComplaint(new Complaint(
+                         data[0],
+                         data[1],
+                         data[2],
+                         data[3])
                 );
-
-                complaintList.addComplaint(complaint);
             }
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
-            try {
-                buffer.close();
-                reader.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
-
-        return complaintList;
+        return complaint;
     }
 
-    public ComplaintList getAllComplaintList() { return complaintList; }
+    public ComplaintList getAllComplaintList() { return complaint; }
 }

@@ -75,7 +75,7 @@ public class RegisterOfficerController {
 
                 } else {
                     //เขียนไฟล์ --> new Account
-                    accounts.addAccount(new OfficerAccount(nameStr,lastnameStr,usernameStr,passwordStr,status,agency,countLogin));
+                    accounts.addAccount(new OfficerAccount(nameStr,lastnameStr,usernameStr,passwordStr,status,agency,lastLogin,countLogin));
                     dataSource.writeData(accounts);
 
                     try {

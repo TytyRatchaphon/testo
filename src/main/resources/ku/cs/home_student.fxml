@@ -25,6 +25,9 @@
          </font>
       </Label>
       <Label fx:id="userNameLabel" layoutX="117.0" layoutY="226.0" text="nameLabel" />
-      <Button layoutX="523.0" layoutY="287.0" mnemonicParsing="false" onAction="#handleReportButton" text="Report" />
+      <Button layoutX="460.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleReportButton" prefHeight="96.0" prefWidth="186.0" text="Report" />
+      <Button layoutX="26.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleLogoutButton" text="Logout" />
+      <Button layoutX="96.0" layoutY="252.0" mnemonicParsing="false" onAction="#handleResetPasswordButton" text="Reset Password" />
+      <Button layoutX="48.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleUploadImageButton" text="Upload User Image" />
    </children>
 </AnchorPane>
